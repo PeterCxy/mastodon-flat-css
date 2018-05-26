@@ -13,7 +13,7 @@ DEFINE COLOR PALETTE
 ------------------*/
 
 /* midnight blue */
-:root {
+/* :root {
 --bgPage: #051119;
 --bg: #123;
 --bgHead: #357;
@@ -22,7 +22,7 @@ DEFINE COLOR PALETTE
 --textMuted: #808890;
 --textHead: var(--textBold);
 --accent: #09f;
-} 
+} */
 
 /* clean slate */
 /*
@@ -39,7 +39,6 @@ DEFINE COLOR PALETTE
 */
 
 /* flamingo */
-/*
 :root {
     --bgPage: #111;
     --bg: #222;
@@ -48,9 +47,8 @@ DEFINE COLOR PALETTE
     --textBold: #fff;
     --textMuted: #888;
     --textHead: var(--textBold);
-    --accent: #f09;
+    --accent: #F4511E;
 } 
-*/
 
 /*----------
 TEXT STYLING
@@ -217,7 +215,7 @@ circle profile pics
 .account__avatar,
 .account__avatar-overlay-base,
 .account__avatar-overlay-overlay
-{border-radius: 50%}
+{border-radius: 20%}
 
 /*-----------------------------------------
 release elephant friend from their confines
