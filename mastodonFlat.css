@@ -6,7 +6,9 @@ MISC TWEAKS
 * {border: 0 !important}
 
 /* custom font */
-body {font-family: "Roboto Condensed"}
+body {
+    font-family: Roboto Condensed, Arial, sans-serif;
+}
 
 /*------------------
 DEFINE COLOR PALETTE
@@ -59,10 +61,13 @@ body,
 .search-results__section h5 span, .search-results__header,
 .column-link,
 .dropdown-menu, .dropdown-menu__item a,
-.status__content__spoiler-link:hover
-{
+.status__content__spoiler-link:hover,
+.actions-modal, .boost-modal, .confirmation-modal, .mute-modal, .report-modal,
+.embed-modal, .error-modal, .onboarding-modal,
+.report-modal__comment .setting-text {
     color: var(--text)
 }
+
 .account__display-name strong, .notification__display-name:hover,
 .status__display-name strong, .detailed-status__display-name strong,
 .account__section-headline a.active,
@@ -77,10 +82,11 @@ body,
 .activity-stream .status.light .display-name strong,
 .activity-stream-tabs a.active,
 .activity-stream .status.light .status__content,
-.regeneration-indicator__label strong
-{
+.regeneration-indicator__label strong,
+.embed-modal h4 {
     color: var(--textBold)
 }
+
 .notification__message, .status__prepend, .status__relative-time,
 .muted .status__content a, .muted .status__content p,
 .muted .status__display-name strong,
@@ -96,10 +102,12 @@ body,
 .icon-button.disabled, .status.status-direct .icon-button.disabled,
 .empty-column-indicator, .error-column, .column-subheading,
 .regeneration-indicator, .nothing-here, .account__disclaimer,
-.attachment-list__list a, .attachment-list.compact .fa
-{
+.attachment-list__list a, .attachment-list.compact .fa,
+.confirmation-modal__action-bar .confirmation-modal__cancel-button, .confirmation-modal__action-bar .mute-modal__cancel-button, .mute-modal__action-bar .confirmation-modal__cancel-button, .mute-modal__action-bar .mute-modal__cancel-button, .embed-modal .embed-modal__container .embed-modal__html,
+.privacy-dropdown__option__content {
     color: var(--textMuted)
 }
+
 .reply-indicator__content a,
 .status__content a,
 .search-results__hashtag:active,
@@ -111,10 +119,11 @@ body,
 .account__action-bar-dropdown .icon-button.active,
 .account__action-bar-dropdown .icon-button:hover,
 .icon-button.inverted:active, .icon-button.inverted:focus, .icon-button.inverted:hover,
-.text-icon-button:active, .text-icon-button:focus, .text-icon-button:hover
-{
+.text-icon-button:active, .text-icon-button:focus, .text-icon-button:hover,
+.compose-form .compose-form__warning a {
     color: var(--accent)
 }
+
 .column-header, .column-back-button,
 .column-header__button, .column-header__button:hover,
 .column-header__button.active, .column-header__button.active:hover,
@@ -123,12 +132,14 @@ body,
 .column-settings__section,
 .setting-text, .setting-meta__label, .setting-toggle__label,
 .setting-text:active, .setting-text:focus,
-.status__content__spoiler-link
-{
+.status__content__spoiler-link,
+.compose-form .compose-form__warning,
+.embed-modal .embed-modal__container .embed-modal__html:focus,
+.activity-stream .status.light .status__content a.status__content__spoiler-link {
     color: var(--textHead)
 }
-.icon-button.disabled:hover
-{
+
+.icon-button.disabled:hover {
     color: var(--bg)
 }
 
@@ -148,10 +159,13 @@ BACKGROUNDS
 .getting-started, .column-link,
 .detailed-status, .detailed-status__action-bar,
 .activity-stream .entry, .activity-stream-tabs,
-.regeneration-indicator
-{
+.regeneration-indicator,
+.actions-modal, .boost-modal, .confirmation-modal, .mute-modal, .report-modal,
+.embed-modal, .error-modal, .onboarding-modal,
+.privacy-dropdown.active .privacy-dropdown__value {
     background: var(--bg);
 }
+
 body, body.app-body, .status.status-direct,
 .drawer__header, .tabs-bar,
 .drawer__inner.backdrop,
@@ -161,11 +175,13 @@ body, body.app-body, .status.status-direct,
 .dropdown-menu, .dropdown-menu__item a,
 .focusable:focus .detailed-status,
 .focusable:focus .detailed-status__action-bar,
-.status__content .status__content__spoiler-link:hover,
-.accounts-grid
-{
+.accounts-grid, .account__moved-note,
+.boost-modal__action-bar, .confirmation-modal__action-bar, .mute-modal__action-bar,
+.embed-modal .embed-modal__container .embed-modal__html,
+.report-modal__comment .setting-text {
     background: var(--bgPage)
 }
+
 .column-header,
 .column-header__button,
 .column-back-button,
@@ -176,21 +192,26 @@ body, body.app-body, .status.status-direct,
 .compose-form__publish:hover .button,
 .status__content .status__content__spoiler-link,
 .list-editor h4,
-.keyboard-shortcuts kbd
-{
-    background: var(--bgHead)
+.keyboard-shortcuts kbd,
+.compose-form .compose-form__warning,
+.embed-modal .embed-modal__container .embed-modal__html:focus,
+.activity-stream .status.light .status__content a.status__content__spoiler-link {
+    background: var(--bgHead);
 }
+
 .compose-form__publish .button,
 .column-header__button:hover, .column-header__button.active:hover,
 .column-link:hover, .column-back-button:hover,
 .column-header>.column-header__back-button:hover,
 .react-toggle--checked .react-toggle-track,
-.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track
-{
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
+.status__content .status__content__spoiler-link:hover,
+.activity-stream .status.light .status__content a.status__content__spoiler-link:hover,
+.button:active, .button:focus, .button:hover {
     background: var(--accent)
 }
-.ui, .drawer__inner, .drawer__inner__mastodon
-{
+
+.ui, .drawer__inner, .drawer__inner__mastodon {
     background: transparent
 }
 
@@ -244,6 +265,19 @@ fix glowing elements when there are new toots to be fetched
 * various tweaks related to making account view
 * look a bit better
 */
+
+/* profile fields - styled separately because i'm not final on the transparent look */
+.account__header .account__header__fields dt,
+.account__header .account__header__fields dd
+{background: rgba(0,0,0,0.5);}
+
+.account__header .account__header__fields dd
+{color: white;}
+.account__header .account__header__fields dt
+{color: var(--textMuted); font-weight: 700}
+
+/* fix weird tiling issue due to new "fields" feature in 2.4.0 */
+.account__header {background-size: cover !important;}
 
 /* recolors */
 .account__header {background: var(--bgHead)}
