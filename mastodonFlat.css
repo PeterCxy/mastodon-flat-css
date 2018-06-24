@@ -52,6 +52,20 @@ DEFINE COLOR PALETTE
     --accent: #F4511E;
 } 
 
+/* droid */
+/*
+:root {
+--bgPage: #111;
+--bg: #222;
+--bgHead: #333;
+--text: #ddd;
+--textBold: #fff;
+--textMuted: #777;
+--textHead: #fff;
+--accent: #a4c639
+} 
+*/
+
 /*----------
 TEXT STYLING
 ----------*/
@@ -64,7 +78,10 @@ body,
 .status__content__spoiler-link:hover,
 .actions-modal, .boost-modal, .confirmation-modal, .mute-modal, .report-modal,
 .embed-modal, .error-modal, .onboarding-modal,
-.report-modal__comment .setting-text {
+.report-modal__comment .setting-text,
+.actions-modal ul li:not(:empty) a,
+.upload-progress,
+.report-modal__comment .setting-toggle__label {
     color: var(--text)
 }
 
@@ -83,7 +100,8 @@ body,
 .activity-stream-tabs a.active,
 .activity-stream .status.light .status__content,
 .regeneration-indicator__label strong,
-.embed-modal h4 {
+.embed-modal h4, .status-card__title,
+.account__section-headline a.active, .community-timeline__section-headline a.active, .public-timeline__section-headline a.active {
     color: var(--textBold)
 }
 
@@ -92,7 +110,7 @@ body,
 .muted .status__display-name strong,
 .status__prepend .status__display-name strong,
 .status__display-name, .detailed-status__display-name,
-.navigation-bar, .getting-started p, .getting-started a,
+.navigation-bar, .getting-started p,
 .search__input, .search__icon .fa, .search-results__hashtag,
 .search-popout, .search-popout h4,
 .account .account__display-name, .account__section-headline a,
@@ -104,7 +122,13 @@ body,
 .regeneration-indicator, .nothing-here, .account__disclaimer,
 .attachment-list__list a, .attachment-list.compact .fa,
 .confirmation-modal__action-bar .confirmation-modal__cancel-button, .confirmation-modal__action-bar .mute-modal__cancel-button, .mute-modal__action-bar .confirmation-modal__cancel-button, .mute-modal__action-bar .mute-modal__cancel-button, .embed-modal .embed-modal__container .embed-modal__html,
-.privacy-dropdown__option__content {
+.privacy-dropdown__option__content,
+.activity-stream .status.light .display-name span, .activity-stream .pre-header,
+.activity-stream .status.light .status__header .status__meta .status__relative-time,
+.activity-stream .pre-header .status__display-name.muted strong,
+.account__section-headline a, .community-timeline__section-headline a, .public-timeline__section-headline a,
+.status-card__host
+{
     color: var(--textMuted)
 }
 
@@ -120,7 +144,12 @@ body,
 .account__action-bar-dropdown .icon-button:hover,
 .icon-button.inverted:active, .icon-button.inverted:focus, .icon-button.inverted:hover,
 .text-icon-button:active, .text-icon-button:focus, .text-icon-button:hover,
-.compose-form .compose-form__warning a {
+.compose-form .compose-form__warning a,
+.account__header__fields a,
+.getting-started p a, .getting-started a,
+.activity-stream .status.light .status__content a, .activity-stream-tabs a,
+.card .name small, .report-modal__statuses .status__content a
+{
     color: var(--accent)
 }
 
@@ -155,14 +184,13 @@ BACKGROUNDS
 .compose-form .compose-form__modifiers,
 .privacy-dropdown__option,
 .column>.scrollable,
-.empty-column-indicator, .error-column,
-.getting-started, .column-link,
+.empty-column-indicator, .error-column, .column-link,
 .detailed-status, .detailed-status__action-bar,
 .activity-stream .entry, .activity-stream-tabs,
 .regeneration-indicator,
 .actions-modal, .boost-modal, .confirmation-modal, .mute-modal, .report-modal,
 .embed-modal, .error-modal, .onboarding-modal,
-.privacy-dropdown.active .privacy-dropdown__value {
+.privacy-dropdown.active .privacy-dropdown__value, .account__action-bar {
     background: var(--bg);
 }
 
@@ -178,7 +206,9 @@ body, body.app-body, .status.status-direct,
 .accounts-grid, .account__moved-note,
 .boost-modal__action-bar, .confirmation-modal__action-bar, .mute-modal__action-bar,
 .embed-modal .embed-modal__container .embed-modal__html,
-.report-modal__comment .setting-text {
+.report-modal__comment .setting-text, .status-card,
+.account__section-headline, .community-timeline__section-headline, .public-timeline__section-headline,
+.flex-spacer, .getting-started, .getting-started__wrapper {
     background: var(--bgPage)
 }
 
@@ -195,7 +225,8 @@ body, body.app-body, .status.status-direct,
 .keyboard-shortcuts kbd,
 .compose-form .compose-form__warning,
 .embed-modal .embed-modal__container .embed-modal__html:focus,
-.activity-stream .status.light .status__content a.status__content__spoiler-link {
+.activity-stream .status.light .status__content a.status__content__spoiler-link,
+.button, a.status-card:hover {
     background: var(--bgHead);
 }
 
@@ -207,12 +238,25 @@ body, body.app-body, .status.status-direct,
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
 .status__content .status__content__spoiler-link:hover,
 .activity-stream .status.light .status__content a.status__content__spoiler-link:hover,
-.button:active, .button:focus, .button:hover {
+.button:active, .button:focus, .button:hover,
+.dropdown-menu__item a:active, .dropdown-menu__item a:focus, .dropdown-menu__item a:hover,
+.floating-action-button
+{
     background: var(--accent)
 }
 
 .ui, .drawer__inner, .drawer__inner__mastodon {
     background: transparent
+}
+
+.account__section-headline a.active:after,
+.account__section-headline a.active:before,
+.community-timeline__section-headline a.active:after,
+.community-timeline__section-headline a.active:before,
+.public-timeline__section-headline a.active:after,
+.public-timeline__section-headline a.active:before
+{
+    border-color: transparent transparent var(--bg)
 }
 
 /*----------------
@@ -249,6 +293,11 @@ release elephant friend from their confines
     z-index: -1
 }
 
+/*--------------------------------------------------------------------
+make "getting started" column height consistent with all other columns
+*/
+.getting-started__footer {margin-top: auto}
+
 /*----------------------------------------------------------
 make transparent images actually transparent in media modals
 */
@@ -279,12 +328,9 @@ fix glowing elements when there are new toots to be fetched
 /* fix weird tiling issue due to new "fields" feature in 2.4.0 */
 .account__header {background-size: cover !important;}
 
-/* recolors */
+/* profile bio theming */
 .account__header {background: var(--bgHead)}
 .account__header>div {background: rgba(0,0,0,0.5)}
-.account__action-bar {background: var(--bg)}
-.account__section-headline {background: var(--bgPage)}
-.account__section-headline a.active::after, .account__section-headline a.active::before {border-color: transparent transparent var(--bg)}
 .account__header__content a {color: var(--accent)}
 
 /* padded background around @handle */
@@ -300,9 +346,17 @@ fix glowing elements when there are new toots to be fetched
 /* adjust margins to account for padding */
 .account__header__content p {margin-bottom: 16px;}
 
-/* floating follow button */
+/* floating follow/edit profile button */
 .account--action-button {background: rgba(0,0,0,0.5); padding: 0.5em; border-radius: 50%;}
 .account--action-button .icon-button {color: #fff}
+.account--action-button:hover {background: var(--accent)}
+
+/* account page tab underline */
+.card .counter.active:after {border-bottom: 4px solid var(--accent)}
+
+/* account pages bio overlay */
+.card .card__bio, .account__header__fields, .account__header__fields dt {background: rgba(0,0,0,0.5)}
+
 
 /* -------------------------------
 * toots in columns button recolor,
